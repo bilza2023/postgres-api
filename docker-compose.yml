@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: 32611
+      POSTGRES_USER: bilal
+      POSTGRES_DB: taleeb_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    container_name: api
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: taleeb_db
+      DATABASE_USER: bilal
+      DATABASE_PASSWORD: 32611
+      JWT_SECRET: rf85nv02cQo17zcd7gYikdWaf9bms40csa1lpd76md2MT4D
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:

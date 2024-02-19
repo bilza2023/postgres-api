@@ -1,0 +1,5 @@
+POSTGRES_PASSWORD
+POSTGRES_USER
+POSTGRES_DB
+
+sudo docker run --name pg -e POSTGRES_PASSWORD=32611 -e POSTGRES_USER=bilal -e POSTGRES_DB=taleeb_db -p 5432:5432 -d postgres
